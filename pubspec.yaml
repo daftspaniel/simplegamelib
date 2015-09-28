@@ -4,6 +4,6 @@ version: 0.0.3
 author: Davy Mitchell <daftspaniel@gmail.com>
 homepage: http://divingintodart.blogspot.co.uk/p/simplegamelib-homepage.html
 dependencies:
-  test: any
+  test: '>=0.12.4 <0.20.0'
 environment:
   sdk: '>=1.0.0 <2.0.0'
