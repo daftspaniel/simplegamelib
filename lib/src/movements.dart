@@ -1,5 +1,6 @@
 import 'dart:math';
 
+/// The Movements class provides pairs of values for setting movements.
 class Movements {
   static final west = new Point(-1, 0);
   static final east = new Point(1, 0);

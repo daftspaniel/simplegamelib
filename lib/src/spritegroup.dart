@@ -3,6 +3,7 @@ library simplegamelib.spritegroup;
 import 'sprite.dart';
 import 'dart:html';
 
+/// A collection of [Sprite] objects.
 class SpriteGroup {
   List<Sprite> sprites;
   CanvasRenderingContext2D canvas;

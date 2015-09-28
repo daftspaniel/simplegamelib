@@ -3,7 +3,7 @@ import 'unimplemented.dart';
 import 'package:simplegamelib/simplegamelib.dart';
 import 'dart:async';
 
-/// Game object.
+/// Core Game object - not mandatory to use but convenient.
 class Game {
   String name;
   Player p1;
@@ -13,7 +13,7 @@ class Game {
   SpriteGroup spriteGroup;
   Timer logup;
 
-  Game(this.name, [String canvasID = ""]) {
+Game(this.name, [String canvasID = ""]) {
     p1 = new Player();
     arena = new Arena();
     resources = new ResourcePack();

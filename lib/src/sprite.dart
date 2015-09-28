@@ -3,6 +3,7 @@ library simplegamelib.sprite;
 import 'dart:math';
 import 'dart:html';
 
+/// A Sprite is an on-screen entity that usually moves.
 class Sprite {
   String tag = '';
   int x = 0;

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.3
+
+- Added URL of homepage for package.
+
 ## 0.0.2
 
 - HomepageUrl in Readme updated.

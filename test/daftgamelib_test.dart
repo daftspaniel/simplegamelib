@@ -25,7 +25,7 @@ void main() {
     });
 
     test('Game', () {
-      Game s = new Game("test", null);
+      Game s = new Game("test");
       expect(s.name, equals("test"));
       expect(s, isNotNull);
     });
@@ -132,15 +132,6 @@ void main() {
   group('Limiter :', () {
     test('Limiter', () {
       Limiter s = new Limiter();
-      print(s);
-    });
-  });
-
-  group('Obstacle :', () {
-    setUp(() {});
-
-    test('Obstacle', () {
-      Obstacle s = new Obstacle();
       print(s);
     });
   });

@@ -1,10 +1,12 @@
-
+/// Limits a sprite to a particular area.
 class Limiter {
 }
 
+/// Audio Utility Class
 class Audio {
 }
 
+/// A compendium of images and sounds.
 class ResourcePack {
 }
 
@@ -14,7 +16,4 @@ class Player {
 
 /// Play area object.
 class Arena {
-}
-
-class Obstacle{
 }
