@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.4
+
+- Added more comments to Game object.
+- Added optional custom update hook to simplify demos.
+
 ## 0.0.3
 
 - Added URL of homepage for package.
