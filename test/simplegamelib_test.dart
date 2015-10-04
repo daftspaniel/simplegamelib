@@ -86,6 +86,14 @@ void main() {
       expect(sg.length, equals(0));
     });
 
+    test('Reverse', () {
+      SpriteGroup sg = createSpriteGroup(4);
+      sg.sprites[0].height = 100;
+      sg.reverse();
+      expect(sg.sprites[0].height, 4);
+      expect(sg.sprites[3].height, 100);
+    });
+
     test('Check empty', () {
       SpriteGroup sg = createSpriteGroup(4);
       expect(sg.empty, equals(false));

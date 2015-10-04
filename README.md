@@ -30,4 +30,4 @@ Github : https://github.com/daftspaniel/simplegamelib
 
 ## To run unit tests.
 
-pub run test .\test\simplegamelib_test.dart -p dartium
+    pub run test .\test\simplegamelib_test.dart -p dartium

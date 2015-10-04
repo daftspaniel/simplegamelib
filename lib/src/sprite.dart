@@ -24,9 +24,13 @@ class Sprite {
     this.y = pos.y;
   }
 
+  // Create a [Sprite] from a file
   Sprite.fromFilename(String filename) {
     image = new ImageElement(src: filename);
     image.onLoad.first;
+    width = image.width;
+    height = image.height;
+    updatePos();
   }
 
   Sprite(this.x, this.y, this.width, this.height) {

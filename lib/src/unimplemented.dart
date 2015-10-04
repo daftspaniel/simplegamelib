@@ -1,3 +1,4 @@
+library unimplemented;
 /// Limits a sprite to a particular area.
 class Limiter {
 }

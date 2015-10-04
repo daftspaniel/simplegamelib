@@ -10,27 +10,33 @@ class SpriteGroup {
   int get length => sprites.length;
   bool get empty => sprites.length == 0;
 
+  /// Creates an empty [Sprite] group.
   SpriteGroup() {
     reset();
   }
 
+  /// Set the group back to empty.
   reset() {
     sprites = new List<Sprite>();
   }
 
+  /// Add a [Sprite] to the group.
   add(Sprite newSprite) {
     newSprite.canvas = canvas;
     sprites.add(newSprite);
   }
 
+  /// Remove sprites that are marked as dead.
   removeDead() {
     sprites.removeWhere((Sprite sprite) => sprite.alive == false);
   }
 
+  /// Update every [Sprite] in this group.
   update() {
     sprites.forEach((Sprite sprite) => sprite.update());
   }
 
+  /// Detect collision between a [Sprite] and all the sprites in this group.
   List detectCollision(Sprite sprite) {
     List collisionSprites = new List();
     sprites.forEach((groupSprite) {
@@ -41,16 +47,23 @@ class SpriteGroup {
     return collisionSprites;
   }
 
+  /// Draw every [Sprite] in the sprite list.
   void draw() {
     sprites.forEach((Sprite sprite) {
       sprite.draw();
     });
   }
 
+  /// Create a [Sprite] from a supplied filename.
   Sprite spriteFromFilename(String filename) {
     Sprite sprite = new Sprite.fromFilename(filename);
     add(sprite);
     sprite.canvas = canvas;
     return sprite;
+  }
+
+  /// Reverse the order of sprites in the list.
+  void reverse() {
+    sprites = new List.from(sprites.reversed);
   }
 }

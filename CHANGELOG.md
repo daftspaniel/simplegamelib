@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.5
+
+- Added more comments to the sprite group object.
+- Added test and method to allow a SpriteGroup to be reversed.
+
 ## 0.0.4
 
 - Added more comments to Game object.
