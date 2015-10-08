@@ -1,4 +1,4 @@
-library renderer;
+library simplegamelib.renderer;
 
 import 'dart:html';
 import 'background.dart';

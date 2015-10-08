@@ -1,4 +1,4 @@
-library background;
+library simplegamelib.background;
 
 import 'dart:math';
 import 'dart:html';

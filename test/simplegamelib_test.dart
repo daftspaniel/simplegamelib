@@ -22,6 +22,7 @@ void main() {
     test('Player', () {
       Player s = new Player();
       expect(s, isNotNull);
+      expect(s.sprite, isNull);
     });
 
     test('Game', () {

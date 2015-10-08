@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.6
+
+- Added default keyboard handling for player to Game object.
+- Started Player object which currently holds a field for the player's sprite object.
+
 ## 0.0.5
 
 - Added more comments to the sprite group object.

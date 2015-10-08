@@ -1,3 +1,5 @@
+library simplegamelib.game;
+
 import 'dart:html';
 import 'unimplemented.dart';
 import 'package:simplegamelib/simplegamelib.dart';
@@ -9,17 +11,17 @@ import 'dart:async';
 class Game {
   /// The name of the game.
   String name;
-  Player p1;
+  Player player;
   Arena arena;
   ResourcePack resources;
   Renderer renderer;
   SpriteGroup spriteGroup;
-  Timer logup;
+  Timer logicUpdate;
   Function customUpdate;
 
   /// The main game constructor.
   Game(this.name, [String canvasID = ""]) {
-    p1 = new Player();
+    player = new Player();
     arena = new Arena();
     resources = new ResourcePack();
     spriteGroup = new SpriteGroup();
@@ -48,7 +50,7 @@ class Game {
 
   /// Begin the game display and update loop.
   void start() {
-    logup = new Timer.periodic(new Duration(milliseconds: 20), update);
+    logicUpdate = new Timer.periodic(new Duration(milliseconds: 20), update);
     window.requestAnimationFrame(this.draw);
   }
 
@@ -56,5 +58,50 @@ class Game {
   void update(Timer i) {
     spriteGroup.update();
     if (customUpdate != null) customUpdate();
+  }
+
+  /// Set some movement keys for the player [Sprite].
+  void setUpKeys(){
+
+    window.onKeyDown.listen( (KeyboardEvent e) {
+      print(e);
+      if (e.keyCode == 38)
+      {
+        player.sprite.movement = new Point(player.sprite.movement.x, -1);
+      }
+      if (e.keyCode == 40)
+      {
+        player.sprite.movement = new Point(player.sprite.movement.x, 1);
+      }
+      if (e.keyCode == 39)
+      {
+        player.sprite.movement = new Point(1, player.sprite.movement.y);
+      }
+      if (e.keyCode == 37)
+      {
+        player.sprite.movement = new Point(-1, player.sprite.movement.y);
+      }
+    });
+
+    window.onKeyUp.listen( (KeyboardEvent e) {
+
+      if (e.keyCode == 38)
+      {
+        player.sprite.movement = new Point(player.sprite.movement.x, 0);
+      }
+      if (e.keyCode == 40)
+      {
+        player.sprite.movement = new Point(player.sprite.movement.x, 0);
+      }
+      if (e.keyCode == 39)
+      {
+        player.sprite.movement = new Point(0, player.sprite.movement.y);
+      }
+      if (e.keyCode == 37)
+      {
+        player.sprite.movement = new Point(0, player.sprite.movement.y);
+      }
+
+    });
   }
 }

@@ -9,6 +9,7 @@ library simplegamelib;
 
 export 'src/simplegamelib_base.dart';
 export 'src/sprite.dart';
+export 'src/player.dart';
 export 'src/spritegroup.dart';
 export 'src/renderer.dart';
 export 'src/background.dart';
