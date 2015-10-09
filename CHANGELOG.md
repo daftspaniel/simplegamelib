@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.7
+- Added AudioBank class for loading and playing sounds.
+- Improved Renderer to have area limits.
+- Game now has a default collectables SpriteGroup.
+- Improved tests and documentation.
+
 ## 0.0.6
 
 - Added default keyboard handling for player to Game object.
