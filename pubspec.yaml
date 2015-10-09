@@ -1,8 +1,8 @@
 name: simplegamelib
 description: An easy to use package for 2D HTML5 Canvas games.
-version: 0.0.6
+version: 0.0.7
 author: Davy Mitchell <daftspaniel@gmail.com>
-homepage: http://divingintodart.blogspot.co.uk/p/simplegamelib-homepage.html
+homepage: http://goo.gl/5ioguA
 dependencies:
   test: '>=0.12.4 <0.20.0'
 environment:

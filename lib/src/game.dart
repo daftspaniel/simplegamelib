@@ -16,8 +16,10 @@ class Game {
   ResourcePack resources;
   Renderer renderer;
   SpriteGroup spriteGroup;
+  SpriteGroup collectablesGroup;
   Timer logicUpdate;
   Function customUpdate;
+  Rectangle drawLimits;
 
   /// The main game constructor.
   Game(this.name, [String canvasID = ""]) {
@@ -25,6 +27,8 @@ class Game {
     arena = new Arena();
     resources = new ResourcePack();
     spriteGroup = new SpriteGroup();
+    collectablesGroup = new SpriteGroup();
+    drawLimits = new Rectangle(0, 0, 800, 600);
     if (canvasID.length > 0) {
       CanvasElement canvas = querySelector(canvasID);
       setDisplay(canvas);
@@ -33,7 +37,8 @@ class Game {
 
   /// Sets the display canvas property.
   void setDisplay(CanvasElement canvas) {
-    renderer = new Renderer(canvas.getContext("2d"));
+    renderer = new Renderer(canvas.getContext("2d"), drawLimits);
+    renderer.addSpriteGroup(collectablesGroup);
     renderer.addSpriteGroup(spriteGroup);
   }
 
@@ -61,47 +66,36 @@ class Game {
   }
 
   /// Set some movement keys for the player [Sprite].
-  void setUpKeys(){
-
-    window.onKeyDown.listen( (KeyboardEvent e) {
+  void setUpKeys() {
+    window.onKeyDown.listen((KeyboardEvent e) {
       print(e);
-      if (e.keyCode == 38)
-      {
+      if (e.keyCode == 38) {
         player.sprite.movement = new Point(player.sprite.movement.x, -1);
       }
-      if (e.keyCode == 40)
-      {
+      if (e.keyCode == 40) {
         player.sprite.movement = new Point(player.sprite.movement.x, 1);
       }
-      if (e.keyCode == 39)
-      {
+      if (e.keyCode == 39) {
         player.sprite.movement = new Point(1, player.sprite.movement.y);
       }
-      if (e.keyCode == 37)
-      {
+      if (e.keyCode == 37) {
         player.sprite.movement = new Point(-1, player.sprite.movement.y);
       }
     });
 
-    window.onKeyUp.listen( (KeyboardEvent e) {
-
-      if (e.keyCode == 38)
-      {
+    window.onKeyUp.listen((KeyboardEvent e) {
+      if (e.keyCode == 38) {
         player.sprite.movement = new Point(player.sprite.movement.x, 0);
       }
-      if (e.keyCode == 40)
-      {
+      if (e.keyCode == 40) {
         player.sprite.movement = new Point(player.sprite.movement.x, 0);
       }
-      if (e.keyCode == 39)
-      {
+      if (e.keyCode == 39) {
         player.sprite.movement = new Point(0, player.sprite.movement.y);
       }
-      if (e.keyCode == 37)
-      {
+      if (e.keyCode == 37) {
         player.sprite.movement = new Point(0, player.sprite.movement.y);
       }
-
     });
   }
 }

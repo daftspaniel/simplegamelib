@@ -10,7 +10,7 @@ void main() {
     setUp(() {});
 
     test('Background', () {
-      Background s = new Background();
+      Background s = new Background(getCanvas(), new Rectangle(0, 0, 800, 600));
       expect(s, isNotNull);
     });
 
@@ -30,18 +30,18 @@ void main() {
       expect(s.name, equals("test"));
       expect(s, isNotNull);
     });
-
   });
   group('Renderer : ', () {
     test('Creation', () {
       CanvasRenderingContext2D GameCanvas = getCanvas();
-      Renderer myRenderer = new Renderer(GameCanvas);
+      Renderer myRenderer =
+          new Renderer(GameCanvas, new Rectangle(0, 0, 800, 600));
       expect(myRenderer, isNotNull);
     });
 
     test('Draw', () {
       CanvasRenderingContext2D GameCanvas = getCanvas();
-      Renderer s = new Renderer(GameCanvas);
+      Renderer s = new Renderer(GameCanvas, new Rectangle(0, 0, 800, 600));
       s.draw();
       expect(s, isNotNull);
     });
@@ -117,6 +117,15 @@ void main() {
       sg.sprites[0].alive = false;
       sg.removeDead();
       expect(sg.length, equals(3));
+      sg.sprites[0].alive = false;
+      sg.removeDead();
+      expect(sg.length, equals(2));
+      sg.sprites[0].alive = false;
+      sg.removeDead();
+      expect(sg.length, equals(1));
+      sg.sprites[0].alive = false;
+      sg.removeDead();
+      expect(sg.length, equals(0));
     });
 
     test('Detect collision with other Sprite', () {
@@ -135,7 +144,6 @@ void main() {
       Sprite s1 = new Sprite(0, 0, 10, 10);
       expect(sg.detectCollision(s1).length, 3);
     });
-
   });
 
   group('Limiter :', () {
@@ -154,7 +162,7 @@ void main() {
     });
 
     test('Audio', () {
-      Audio s = new Audio();
+      AudioBank s = new AudioBank();
       print(s);
     });
   });

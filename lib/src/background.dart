@@ -6,11 +6,23 @@ import 'dart:html';
 /// Basic background data and drawing object.
 class Background {
   String tag = '';
-  Rectangle rect = null;
   CanvasRenderingContext2D canvas;
+  ImageElement image;
+  Rectangle limits;
+  Background(this.canvas, this.limits) {}
 
-  void draw() {
-    canvas.clearRect(0, 0, 800, 600);
+  /// Sets an [Image] as the background
+  setImageBackground(String filename) {
+    image = new ImageElement(src: filename);
+    image.onLoad.first;
   }
 
+  /// Draw the background or just clear to the [CanvasElement] default color.
+  void draw() {
+    if (image != null) {
+      canvas.drawImage(image, limits.left, limits.top);
+    } else {
+      canvas.clearRect(limits.left, limits.top, limits.width, limits.height);
+    }
+  }
 }

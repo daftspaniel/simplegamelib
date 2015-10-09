@@ -3,10 +3,6 @@ library simplegamelib.unimplemented;
 class Limiter {
 }
 
-/// Audio Utility Class
-class Audio {
-}
-
 /// A compendium of images and sounds.
 class ResourcePack {
 }

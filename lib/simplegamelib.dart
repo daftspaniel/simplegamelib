@@ -16,3 +16,4 @@ export 'src/background.dart';
 export 'src/unimplemented.dart';
 export 'src/game.dart';
 export 'src/movements.dart';
+export 'src/audiobank.dart';

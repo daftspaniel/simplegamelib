@@ -10,18 +10,21 @@ class Renderer {
 
   Background liveBackground;
   CanvasRenderingContext2D gameCanvas;
+  Rectangle limits;
 
-  Renderer(this.gameCanvas) {
-    liveBackground = new Background();
-    liveBackground.canvas = this.gameCanvas;
+  /// Creates a renderer for a specific canvas.
+  Renderer(this.gameCanvas, this.limits) {
+    liveBackground = new Background(this.gameCanvas, limits);
     resetGroups();
   }
 
+  /// Add a [SpriteGroup] to the [List] of groups handled by this renderer.
   addSpriteGroup(SpriteGroup spriteGroup) {
     spriteGroup.canvas = gameCanvas;
     _spriteGroups.add(spriteGroup);
   }
 
+  /// Draw [Background] and all [SpriteGroup] objects.
   draw() {
     liveBackground.draw();
     _spriteGroups.forEach((SpriteGroup spriteGroup) {
@@ -29,6 +32,7 @@ class Renderer {
     });
   }
 
+  /// Reset the group to empty.
   resetGroups() {
     _spriteGroups = new List<SpriteGroup>();
   }
