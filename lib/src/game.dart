@@ -38,8 +38,7 @@ class Game {
   /// Sets the display canvas property.
   void setDisplay(CanvasElement canvas) {
     renderer = new Renderer(canvas.getContext("2d"), drawLimits);
-    renderer.addSpriteGroup(collectablesGroup);
-    renderer.addSpriteGroup(spriteGroup);
+    renderer..addSpriteGroup(collectablesGroup)..addSpriteGroup(spriteGroup);
   }
 
   /// Create a [Sprite] object and add it to the built in [SpriteGroup].

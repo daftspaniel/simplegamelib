@@ -69,7 +69,27 @@ void main() {
       expect(s.rect.height, equals(4));
       expect(s.rect.width, equals(3));
     });
+
+    test('Speed', () {
+      Sprite s = createSprite();
+      s.setMovement(10, 15);
+      s.update();
+      s.update();
+      s.update();
+
+      expect(s.x, equals(31));
+      s.speed = 2;
+
+      s.update();
+      s.update();
+      s.update();
+
+      expect(s.x, equals(91));
+
+    });
+
   });
+
   group('SpriteGroup : ', () {
     test('Creation', () {
       SpriteGroup s = new SpriteGroup();
@@ -133,6 +153,35 @@ void main() {
       sg.add(new Sprite(110, 110, 10, 10));
       Sprite s1 = new Sprite(0, 0, 10, 10);
       expect(sg.detectCollision(s1).length, 4);
+    });
+
+    test('Add limiter to a Sprite', () {
+      Sprite sg = new Sprite(10, 10, 10, 10);
+      sg.limits = new Rectangle(0,0,100,100);
+      sg.movement = new Point(-10,-10);
+      print(sg.rect);
+      sg.update();print(sg.rect);
+      sg.update();print(sg.rect);
+      sg.update();print(sg.rect);
+      expect(sg.x, 0);
+      expect(sg.y, 0);
+      sg.movement = new Point(10,5);
+      sg.update();
+      sg.update();
+      sg.update();
+      sg.update();
+      sg.update();
+      expect(sg.x, 50);
+      expect(sg.y, 25);
+      sg.movement = new Point(10,50);
+      sg.update();
+      sg.update();
+      sg.update();
+      sg.update();
+      sg.update();
+      sg.update();
+      expect(sg.x, lessThan(101));
+      expect(sg.y, lessThan(101));
     });
 
     test('Detect collision with some dying Sprites', () {

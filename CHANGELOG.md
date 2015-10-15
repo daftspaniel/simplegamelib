@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.8
+-
+
 ## 0.0.7
 - Added AudioBank class for loading and playing sounds.
 - Improved Renderer to have area limits.
