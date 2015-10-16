@@ -1,7 +1,12 @@
 # Changelog
 
 ## 0.0.8
--
+- Sprite now has setters for x y.
+- Sprite now has a limit Rectangle.
+- Sprite now requires width and height for creation.
+- Sprite now has stop method.
+- SpriteGroup updated with Sprite changes.
+- General documentation improvements.
 
 ## 0.0.7
 - Added AudioBank class for loading and playing sounds.

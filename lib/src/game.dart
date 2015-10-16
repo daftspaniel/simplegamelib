@@ -42,8 +42,8 @@ class Game {
   }
 
   /// Create a [Sprite] object and add it to the built in [SpriteGroup].
-  Sprite createSprite(String filename) {
-    return spriteGroup.spriteFromFilename(filename);
+  Sprite createSprite(String filename, int width, int height) {
+    return spriteGroup.spriteFromFilename(filename, width, height);
   }
 
   /// Draw the current scene with the [Renderer].
@@ -58,7 +58,7 @@ class Game {
     window.requestAnimationFrame(this.draw);
   }
 
-  /// Logic update loop.
+  /// Logic update loop using [Timer].
   void update(Timer i) {
     spriteGroup.update();
     if (customUpdate != null) customUpdate();

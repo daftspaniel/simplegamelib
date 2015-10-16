@@ -88,6 +88,30 @@ void main() {
 
     });
 
+    test('Stop', () {
+      Sprite s = createSprite();
+      s.x=0;
+      s.y=0;
+      s.setMovement(10, 15);
+      s.update();
+      s.update();
+      s.update();
+
+      expect(s.x, equals(30));
+      expect(s.y, equals(45));
+      s.stop();
+
+      s.update();
+      s.update();
+      s.update();
+
+      expect(s.x, equals(30));
+      expect(s.y, equals(45));
+
+    });
+
+
+
   });
 
   group('SpriteGroup : ', () {

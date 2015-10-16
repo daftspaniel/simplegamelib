@@ -2,12 +2,13 @@ library simplegamelib.sprite;
 
 import 'dart:math';
 import 'dart:html';
+import 'Movements.dart';
 
 /// A Sprite is an on-screen entity that usually moves.
 class Sprite {
   String tag = '';
-  int x = 0;
-  int y = 0;
+  int _x = 0;
+  int _y = 0;
   int width = 0;
   int height = 0;
 
@@ -23,16 +24,34 @@ class Sprite {
   CanvasRenderingContext2D canvas;
 
   set position(Point pos) {
-    this.x = pos.x;
-    this.y = pos.y;
+    this._x = pos.x;
+    this._y = pos.y;
   }
 
-  void set speed(int newSpeed) {
+  set speed(int newSpeed) {
     _speed = newSpeed;
   }
 
+  int get x {
+    return _x;
+  }
+
+  int get y {
+    return _y;
+  }
+
+  set x(int newX) {
+    _x = newX;
+    updatePos();
+  }
+
+  set y(int newY) {
+    _y = newY;
+    updatePos();
+  }
+
   // Create a [Sprite] from a file
-  Sprite.fromFilename(String filename) {
+  Sprite.fromFilename(String filename, this.width, this.height) {
     image = new ImageElement(src: filename);
     image.onLoad.first;
     width = image.width;
@@ -40,19 +59,19 @@ class Sprite {
     updatePos();
   }
 
-  Sprite(this.x, this.y, this.width, this.height) {
+  Sprite(this._x, this._y, this.width, this.height) {
     updatePos();
   }
 
   // Update the positional [Rectangle] for this [Sprite].
   void updatePos() {
-    rect = new Rectangle(x, y, width, height);
+    rect = new Rectangle(_x, _y, width, height);
   }
 
   // Draw this [Sprite].
   void draw() {
     //print('Draw image $canvas $image $x $y');
-    canvas.drawImage(image, this.x, this.y);
+    canvas.drawImage(image, this._x, this._y);
   }
 
   /// Detect if the [Rectangle] of the supplied [Sprite] collides with this one.
@@ -63,6 +82,11 @@ class Sprite {
   // Set movement values.
   void setMovement(int horizontal, int vertical) {
     movement = new Point(horizontal, vertical);
+  }
+
+  // Stop the [Sprite] moving.
+  void stop() {
+    movement = Movements.none;
   }
 
   // Updated the sprites positional [Rectangle] depending on movement, speed and limiter settings.
@@ -84,8 +108,8 @@ class Sprite {
       }
     }
 
-    x += xMove;
-    y += yMove;
+    _x += xMove;
+    _y += yMove;
 
     if (0 != xMove || 0 != yMove) updatePos();
   }

@@ -55,8 +55,8 @@ class SpriteGroup {
   }
 
   /// Create a [Sprite] from a supplied filename.
-  Sprite spriteFromFilename(String filename) {
-    Sprite sprite = new Sprite.fromFilename(filename);
+  Sprite spriteFromFilename(String filename, int width, int height) {
+    Sprite sprite = new Sprite.fromFilename(filename, width, height);
     add(sprite);
     sprite.canvas = canvas;
     return sprite;
