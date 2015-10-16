@@ -2,7 +2,7 @@ library simplegamelib.sprite;
 
 import 'dart:math';
 import 'dart:html';
-import 'Movements.dart';
+import 'movements.dart';
 
 /// A Sprite is an on-screen entity that usually moves.
 class Sprite {
