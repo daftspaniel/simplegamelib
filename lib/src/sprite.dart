@@ -3,6 +3,7 @@ library simplegamelib.sprite;
 import 'dart:math';
 import 'dart:html';
 import 'movements.dart';
+import 'spritegroup.dart';
 
 /// A Sprite is an on-screen entity that usually moves.
 class Sprite {
@@ -25,9 +26,14 @@ class Sprite {
   ImageElement image;
   CanvasRenderingContext2D canvas;
 
+  /// List of [Sprite] objects that this one can't overlap.
+  SpriteGroup obstacles;
+
+  /// Move the [Sprite] to position in [Point]. No checks made.
   set position(Point pos) {
     this._x = pos.x;
     this._y = pos.y;
+    updatePos();
   }
 
   /// Relative speed acts as multiplier for movement values.
@@ -78,7 +84,12 @@ class Sprite {
 
   /// Detect if the [Rectangle] of the supplied [Sprite] collides with this one.
   bool detectCollision(Sprite anotherEntity) {
-    return rect.intersects(anotherEntity.rect);
+  return rect.intersects(anotherEntity.rect);
+  }
+
+  /// Detect if the [Rectangle] of the supplied [Rectangle] collides with this one.
+  bool detectCollisionRectangle(Rectangle targetRect) {
+    return rect.intersects(targetRect);
   }
 
   /// Set movement values.
@@ -97,6 +108,7 @@ class Sprite {
     int yMove = movement.y * _speed;
     Rectangle nextRect;
 
+    // Limit sprite to area of display.
     if (limits != null) {
       nextRect =
           new Rectangle(rect.left + xMove, rect.top, rect.width, rect.height);
@@ -104,9 +116,18 @@ class Sprite {
         xMove = 0;
       }
       nextRect =
-          new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
+      new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
       if (!limits.containsRectangle(nextRect)) {
         yMove = 0;
+      }
+    }
+
+    //obstacles
+    if (obstacles != null){
+      nextRect =
+      new Rectangle(rect.left + xMove, rect.top + yMove, rect.width, rect.height);
+      if (obstacles.detectCollisionRectangle(nextRect).length>0){
+        return;
       }
     }
 

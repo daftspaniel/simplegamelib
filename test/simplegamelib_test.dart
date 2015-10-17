@@ -55,6 +55,40 @@ void main() {
       expect(s, isNotNull);
     });
 
+    test('Obstacles', () {
+      Sprite s = createSprite();
+      Sprite wall = createSprite();
+      SpriteGroup walls = new SpriteGroup();
+      s
+        ..position = new Point(0, 0)
+        ..setMovement(10, 0)
+        ..updatePos();
+
+      wall..position = new Point(50, 0)
+          ..width = 100
+          ..height = 1000
+          ..updatePos();
+      walls.add(wall);
+      s.obstacles = walls;
+      print(s.rect);
+      print(wall.rect);
+      s
+        ..update()
+        ..update()
+        ..update()
+        ..update()
+        ..update();
+
+      /*  ..update()
+        ..update()
+        ..update()
+        ..update();*/
+      print('Final');
+      print(s.rect);
+      print(wall.rect);
+      expect(s.x, equals(40));
+    });
+
     test('Movement', () {
       Sprite s = createSprite();
       s.setMovement(10, 15);
@@ -85,13 +119,12 @@ void main() {
       s.update();
 
       expect(s.x, equals(91));
-
     });
 
     test('Stop', () {
       Sprite s = createSprite();
-      s.x=0;
-      s.y=0;
+      s.x = 0;
+      s.y = 0;
       s.setMovement(10, 15);
       s.update();
       s.update();
@@ -107,11 +140,7 @@ void main() {
 
       expect(s.x, equals(30));
       expect(s.y, equals(45));
-
     });
-
-
-
   });
 
   group('SpriteGroup : ', () {
@@ -181,15 +210,18 @@ void main() {
 
     test('Add limiter to a Sprite', () {
       Sprite sg = new Sprite(10, 10, 10, 10);
-      sg.limits = new Rectangle(0,0,100,100);
-      sg.movement = new Point(-10,-10);
+      sg.limits = new Rectangle(0, 0, 100, 100);
+      sg.movement = new Point(-10, -10);
       print(sg.rect);
-      sg.update();print(sg.rect);
-      sg.update();print(sg.rect);
-      sg.update();print(sg.rect);
+      sg.update();
+      print(sg.rect);
+      sg.update();
+      print(sg.rect);
+      sg.update();
+      print(sg.rect);
       expect(sg.x, 0);
       expect(sg.y, 0);
-      sg.movement = new Point(10,5);
+      sg.movement = new Point(10, 5);
       sg.update();
       sg.update();
       sg.update();
@@ -197,7 +229,7 @@ void main() {
       sg.update();
       expect(sg.x, 50);
       expect(sg.y, 25);
-      sg.movement = new Point(10,50);
+      sg.movement = new Point(10, 50);
       sg.update();
       sg.update();
       sg.update();

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.10
+- Bug Fixes.
+- Improved documentation comments.
+- Sprite objects now have an obstacle list.
+- SpriteGroup and sprite can now detect collision from a Rectangle.
+- Added more Movements presets.
+
 ## 0.0.9
 - Bug fix for width and height in Sprite constructor.
 - Improved documentation comments.

@@ -39,9 +39,20 @@ class SpriteGroup {
   /// Detect collision between a [Sprite] and all the sprites in this group.
   List detectCollision(Sprite sprite) {
     List collisionSprites = new List();
-    sprites.forEach((groupSprite) {
+    sprites.forEach((Sprite groupSprite) {
       if (groupSprite.detectCollision(sprite) &&
           groupSprite.dying == false) collisionSprites.add(groupSprite);
+    });
+
+    return collisionSprites;
+  }
+
+  /// Detects collision between a [Rectangle] and all the sprites in this group.
+  List detectCollisionRectangle(Rectangle rect) {
+    List collisionSprites = new List();
+    sprites.forEach((Sprite groupSprite) {
+      if (groupSprite.detectCollisionRectangle(rect) &&
+      groupSprite.dying == false) collisionSprites.add(groupSprite);
     });
 
     return collisionSprites;
