@@ -7,6 +7,7 @@ import 'movements.dart';
 /// A Sprite is an on-screen entity that usually moves.
 class Sprite {
   String tag = '';
+
   int _x = 0;
   int _y = 0;
   int width = 0;
@@ -16,6 +17,7 @@ class Sprite {
 
   bool alive = true;
   bool dying = false;
+
   Point movement = new Point(0, 0);
 
   Rectangle rect;
@@ -28,6 +30,7 @@ class Sprite {
     this._y = pos.y;
   }
 
+  /// Relative speed acts as multiplier for movement values.
   set speed(int newSpeed) {
     _speed = newSpeed;
   }
@@ -50,25 +53,24 @@ class Sprite {
     updatePos();
   }
 
-  // Create a [Sprite] from a file
+  /// Create a [Sprite] from a file
   Sprite.fromFilename(String filename, this.width, this.height) {
     image = new ImageElement(src: filename);
     image.onLoad.first;
-    width = image.width;
-    height = image.height;
     updatePos();
   }
 
+  /// Create a [Sprite] with no image. Intended for subclasses and testing.
   Sprite(this._x, this._y, this.width, this.height) {
     updatePos();
   }
 
-  // Update the positional [Rectangle] for this [Sprite].
+  /// Update the positional [Rectangle] for this [Sprite].
   void updatePos() {
     rect = new Rectangle(_x, _y, width, height);
   }
 
-  // Draw this [Sprite].
+  /// Draw this [Sprite].
   void draw() {
     //print('Draw image $canvas $image $x $y');
     canvas.drawImage(image, this._x, this._y);
@@ -79,17 +81,17 @@ class Sprite {
     return rect.intersects(anotherEntity.rect);
   }
 
-  // Set movement values.
+  /// Set movement values.
   void setMovement(int horizontal, int vertical) {
     movement = new Point(horizontal, vertical);
   }
 
-  // Stop the [Sprite] moving.
+  /// Stop the [Sprite] moving.
   void stop() {
     movement = Movements.none;
   }
 
-  // Updated the sprites positional [Rectangle] depending on movement, speed and limiter settings.
+  /// Updated the [Sprite]'s positional [Rectangle] depending on movement, speed and limiter settings.
   void update() {
     int xMove = movement.x * _speed;
     int yMove = movement.y * _speed;

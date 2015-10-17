@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.9
+- Bug fix for width and height in Sprite constructor.
+- Improved documentation comments.
+
 ## 0.0.8
 - Sprite now has setters for x y.
 - Sprite now has a limit Rectangle.
