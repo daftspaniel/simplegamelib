@@ -1,9 +1,8 @@
 library simplegamelib.game;
 
-import 'dart:html';
-import 'unimplemented.dart';
-import 'package:simplegamelib/simplegamelib.dart';
 import 'dart:async';
+import 'dart:html';
+import 'package:simplegamelib/simplegamelib.dart';
 
 /// Core [Game] object - not mandatory to use but convenient.
 /// All forms the basis of many demos so that they are not
@@ -16,7 +15,7 @@ class Game {
   ResourcePack resources;
   Renderer renderer;
   SpriteGroup spriteGroup;
-  SpriteGroup collectablesGroup;
+  SpriteGroup collectiblesGroup;
   Timer logicUpdate;
   Function customUpdate;
   Rectangle drawLimits;
@@ -27,7 +26,7 @@ class Game {
     arena = new Arena();
     resources = new ResourcePack();
     spriteGroup = new SpriteGroup();
-    collectablesGroup = new SpriteGroup();
+    collectiblesGroup = new SpriteGroup();
     drawLimits = new Rectangle(0, 0, 800, 600);
     if (canvasID.length > 0) {
       CanvasElement canvas = querySelector(canvasID);
@@ -38,7 +37,7 @@ class Game {
   /// Sets the display canvas property.
   void setDisplay(CanvasElement canvas) {
     renderer = new Renderer(canvas.getContext("2d"), drawLimits);
-    renderer..addSpriteGroup(collectablesGroup)..addSpriteGroup(spriteGroup);
+    renderer..addSpriteGroup(collectiblesGroup)..addSpriteGroup(spriteGroup);
   }
 
   /// Create a [Sprite] object and add it to the built in [SpriteGroup].
@@ -62,6 +61,17 @@ class Game {
   void update(Timer i) {
     spriteGroup.update();
     if (customUpdate != null) customUpdate();
+
+    // Default collectibles.
+    collectiblesGroup.sprites.forEach((Collectible thing) {
+      if (thing.detectCollision(player.sprite)) {
+        player
+          ..health += thing.healthDelta
+          ..score += thing.scoreDelta;
+        thing.alive = false;
+        collectiblesGroup.removeDead();
+      }
+    });
   }
 
   /// Set some movement keys for the player [Sprite].

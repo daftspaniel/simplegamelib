@@ -1,4 +1,5 @@
 library simplegamelib.movements;
+
 import 'dart:math';
 
 /// The Movements class provides pairs of values for setting movements.

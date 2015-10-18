@@ -70,8 +70,8 @@ void main() {
           ..updatePos();
       walls.add(wall);
       s.obstacles = walls;
-      print(s.rect);
-      print(wall.rect);
+      //print(s.rect);
+      //print(wall.rect);
       s
         ..update()
         ..update()
@@ -83,9 +83,9 @@ void main() {
         ..update()
         ..update()
         ..update();*/
-      print('Final');
-      print(s.rect);
-      print(wall.rect);
+      //print('Final');
+      //print(s.rect);
+      //print(wall.rect);
       expect(s.x, equals(40));
     });
 
@@ -203,22 +203,22 @@ void main() {
 
     test('Detect collision with other Sprite', () {
       SpriteGroup sg = createSpriteGroup(4);
-      sg.add(new Sprite(110, 110, 10, 10));
-      Sprite s1 = new Sprite(0, 0, 10, 10);
+      sg.add(new Sprite.noImage(110, 110, 10, 10));
+      Sprite s1 = new Sprite.noImage(0, 0, 10, 10);
       expect(sg.detectCollision(s1).length, 4);
     });
 
     test('Add limiter to a Sprite', () {
-      Sprite sg = new Sprite(10, 10, 10, 10);
+      Sprite sg = new Sprite.noImage(10, 10, 10, 10);
       sg.limits = new Rectangle(0, 0, 100, 100);
       sg.movement = new Point(-10, -10);
-      print(sg.rect);
+      //print(sg.rect);
       sg.update();
-      print(sg.rect);
+      //print(sg.rect);
       sg.update();
-      print(sg.rect);
+      //print(sg.rect);
       sg.update();
-      print(sg.rect);
+      //print(sg.rect);
       expect(sg.x, 0);
       expect(sg.y, 0);
       sg.movement = new Point(10, 5);
@@ -246,7 +246,7 @@ void main() {
       dyingSprite.dying = true;
       sg.add(dyingSprite);
 
-      Sprite s1 = new Sprite(0, 0, 10, 10);
+      Sprite s1 = new Sprite.noImage(0, 0, 10, 10);
       expect(sg.detectCollision(s1).length, 3);
     });
   });

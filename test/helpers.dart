@@ -1,7 +1,7 @@
 import 'package:simplegamelib/simplegamelib.dart';
 import 'dart:html';
 
-Sprite createSprite(){return new Sprite(1,2,3,4);}
+Sprite createSprite(){return new Sprite.noImage(1,2,3,4);}
 
 SpriteGroup createSpriteGroup(int count){
   SpriteGroup sg = new SpriteGroup();

@@ -1,7 +1,7 @@
 library simplegamelib.spritegroup;
 
-import 'sprite.dart';
 import 'dart:html';
+import 'sprite.dart';
 
 /// A collection of [Sprite] objects.
 class SpriteGroup {
@@ -52,7 +52,7 @@ class SpriteGroup {
     List collisionSprites = new List();
     sprites.forEach((Sprite groupSprite) {
       if (groupSprite.detectCollisionRectangle(rect) &&
-      groupSprite.dying == false) collisionSprites.add(groupSprite);
+          groupSprite.dying == false) collisionSprites.add(groupSprite);
     });
 
     return collisionSprites;

@@ -11,6 +11,12 @@ class Background {
   Rectangle limits;
   Background(this.canvas, this.limits) {}
 
+  String _color;
+  set color(String newColor) {
+    _color = newColor;
+    canvas.fillStyle = _color;
+  }
+
   /// Sets an [Image] as the background
   setImageBackground(String filename) {
     image = new ImageElement(src: filename);
@@ -21,6 +27,8 @@ class Background {
   void draw() {
     if (image != null) {
       canvas.drawImage(image, limits.left, limits.top);
+    } else if (_color != null) {
+      canvas.fillRect(0, 0, 300, 150);
     } else {
       canvas.clearRect(limits.left, limits.top, limits.width, limits.height);
     }

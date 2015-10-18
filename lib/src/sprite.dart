@@ -11,8 +11,8 @@ class Sprite {
 
   int _x = 0;
   int _y = 0;
-  int width = 0;
-  int height = 0;
+  int _width = 0;
+  int _height = 0;
 
   int _speed = 1;
 
@@ -49,6 +49,24 @@ class Sprite {
     return _y;
   }
 
+  int get width {
+    return _width;
+  }
+
+  set width(int newWidth) {
+    _width = newWidth;
+    updatePos();
+  }
+
+  int get height {
+    return _height;
+  }
+
+  set height(int newHeight) {
+    _height = newHeight;
+    updatePos();
+  }
+
   set x(int newX) {
     _x = newX;
     updatePos();
@@ -60,31 +78,33 @@ class Sprite {
   }
 
   /// Create a [Sprite] from a file
-  Sprite.fromFilename(String filename, this.width, this.height) {
+  Sprite.fromFilename(String filename, this._width, this._height) {
     image = new ImageElement(src: filename);
     image.onLoad.first;
     updatePos();
   }
 
-  /// Create a [Sprite] with no image. Intended for subclasses and testing.
-  Sprite(this._x, this._y, this.width, this.height) {
+  /// Default Constructor.Intended for subclasses.
+  Sprite() {}
+
+  /// Create a [Sprite] with no image. Intended for testing.
+  Sprite.noImage(this._x, this._y, this._width, this._height) {
     updatePos();
   }
 
   /// Update the positional [Rectangle] for this [Sprite].
   void updatePos() {
-    rect = new Rectangle(_x, _y, width, height);
+    rect = new Rectangle(_x, _y, _width, _height);
   }
 
   /// Draw this [Sprite].
   void draw() {
-    //print('Draw image $canvas $image $x $y');
     canvas.drawImage(image, this._x, this._y);
   }
 
   /// Detect if the [Rectangle] of the supplied [Sprite] collides with this one.
   bool detectCollision(Sprite anotherEntity) {
-  return rect.intersects(anotherEntity.rect);
+    return rect.intersects(anotherEntity.rect);
   }
 
   /// Detect if the [Rectangle] of the supplied [Rectangle] collides with this one.
@@ -116,17 +136,17 @@ class Sprite {
         xMove = 0;
       }
       nextRect =
-      new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
+          new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
       if (!limits.containsRectangle(nextRect)) {
         yMove = 0;
       }
     }
 
     //obstacles
-    if (obstacles != null){
-      nextRect =
-      new Rectangle(rect.left + xMove, rect.top + yMove, rect.width, rect.height);
-      if (obstacles.detectCollisionRectangle(nextRect).length>0){
+    if (obstacles != null) {
+      nextRect = new Rectangle(
+          rect.left + xMove, rect.top + yMove, rect.width, rect.height);
+      if (obstacles.detectCollisionRectangle(nextRect).length > 0) {
         return;
       }
     }

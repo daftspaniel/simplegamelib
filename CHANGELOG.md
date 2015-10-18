@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.11
+- Added color property to background.
+- Added Collectible class.
+
 ## 0.0.10
 - Bug Fixes.
 - Improved documentation comments.
