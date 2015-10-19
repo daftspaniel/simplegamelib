@@ -3,6 +3,7 @@
 ## 0.0.11
 - Added color property to background.
 - Added Collectible class.
+- Bug fixes for SpriteGroup - canvas not set on Sprites if null.
 
 ## 0.0.10
 - Bug Fixes.

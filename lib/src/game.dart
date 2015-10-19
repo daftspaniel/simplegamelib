@@ -77,7 +77,7 @@ class Game {
   /// Set some movement keys for the player [Sprite].
   void setUpKeys() {
     window.onKeyDown.listen((KeyboardEvent e) {
-      print(e);
+
       if (e.keyCode == 38) {
         player.sprite.movement = new Point(player.sprite.movement.x, -1);
       }

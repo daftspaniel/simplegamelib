@@ -28,7 +28,7 @@ class Background {
     if (image != null) {
       canvas.drawImage(image, limits.left, limits.top);
     } else if (_color != null) {
-      canvas.fillRect(0, 0, 300, 150);
+      canvas.fillRect(limits.left, limits.top, limits.width, limits.height);
     } else {
       canvas.clearRect(limits.left, limits.top, limits.width, limits.height);
     }

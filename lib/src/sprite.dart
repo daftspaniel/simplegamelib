@@ -99,7 +99,7 @@ class Sprite {
 
   /// Draw this [Sprite].
   void draw() {
-    canvas.drawImage(image, this._x, this._y);
+    canvas.drawImage(image, _x, _y);
   }
 
   /// Detect if the [Rectangle] of the supplied [Sprite] collides with this one.
@@ -132,13 +132,17 @@ class Sprite {
     if (limits != null) {
       nextRect =
           new Rectangle(rect.left + xMove, rect.top, rect.width, rect.height);
+
       if (!limits.containsRectangle(nextRect)) {
         xMove = 0;
+
       }
       nextRect =
-          new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
+      new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
+
       if (!limits.containsRectangle(nextRect)) {
         yMove = 0;
+        //print("killy");
       }
     }
 
@@ -151,6 +155,7 @@ class Sprite {
       }
     }
 
+    // do actual move.
     _x += xMove;
     _y += yMove;
 
