@@ -34,6 +34,7 @@ class SpriteGroup {
   /// Update every [Sprite] in this group.
   update() {
     sprites.forEach((Sprite sprite) => sprite.update());
+    removeDead();
   }
 
   /// Detect collision between a [Sprite] and all the sprites in this group.
