@@ -7,7 +7,6 @@ import 'spritegroup.dart';
 
 /// A Sprite is an on-screen entity that usually moves.
 class Sprite {
-  String tag = '';
 
   int _x = 0;
   int _y = 0;
@@ -15,6 +14,7 @@ class Sprite {
   int _height = 0;
 
   int _speed = 1;
+  String tag = '';
 
   bool alive = true;
   bool dying = false;
@@ -29,37 +29,14 @@ class Sprite {
   /// List of [Sprite] objects that this one can't overlap.
   SpriteGroup obstacles;
 
-  /// Move the [Sprite] to position in [Point]. No checks made.
-  set position(Point pos) {
-    this._x = pos.x;
-    this._y = pos.y;
-    updatePos();
-  }
-
-  /// Relative speed acts as multiplier for movement values.
-  set speed(int newSpeed) {
-    _speed = newSpeed;
-  }
-
-  int get x {
-    return _x;
-  }
-
-  int get y {
-    return _y;
-  }
-
-  int get width {
-    return _width;
-  }
+  int get x => _x;
+  int get y => _y;
+  int get width => _width;
+  int get height => _height;
 
   set width(int newWidth) {
     _width = newWidth;
     updatePos();
-  }
-
-  int get height {
-    return _height;
   }
 
   set height(int newHeight) {
@@ -75,6 +52,18 @@ class Sprite {
   set y(int newY) {
     _y = newY;
     updatePos();
+  }
+
+  /// Move the [Sprite] to position in [Point]. No checks made.
+  set position(Point pos) {
+    this._x = pos.x;
+    this._y = pos.y;
+    updatePos();
+  }
+
+  /// Relative speed acts as multiplier for movement values.
+  set speed(int newSpeed) {
+    _speed = newSpeed;
   }
 
   /// Create a [Sprite] from a file
@@ -135,10 +124,9 @@ class Sprite {
 
       if (!limits.containsRectangle(nextRect)) {
         xMove = 0;
-
       }
       nextRect =
-      new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
+          new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
 
       if (!limits.containsRectangle(nextRect)) {
         yMove = 0;
