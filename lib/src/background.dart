@@ -6,12 +6,15 @@ import 'dart:html';
 /// Basic background data and drawing object.
 class Background {
   String tag = '';
+
   CanvasRenderingContext2D canvas;
   ImageElement image;
   Rectangle limits;
   Background(this.canvas, this.limits) {}
 
   String _color;
+
+  /// Sets the [CanvasRenderingContext2D] fillStyle color.
   set color(String newColor) {
     _color = newColor;
     canvas.fillStyle = _color;

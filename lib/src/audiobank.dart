@@ -5,6 +5,7 @@ import 'dart:html';
 /// Audio Utility Class
 /// Note : Dartium will NOT play MP3 files.
 class AudioBank {
+
   Map<String, AudioElement> sounds = {};
 
   /// Play the sound with the given name.

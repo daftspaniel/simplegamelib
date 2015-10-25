@@ -16,3 +16,8 @@ class Movements {
 
   static final none = new Point(0, 0);
 }
+
+/// Change direction of the current [Point].
+Point reverseDirection(Point current){
+  return new Point(current.x*-1, current.y*-1);
+}

@@ -22,7 +22,7 @@ class SpriteGroup {
 
   /// Add a [Sprite] to the group.
   add(Sprite newSprite) {
-    if (canvas!=null) newSprite.canvas = canvas;
+    if (canvas != null) newSprite.canvas = canvas;
     sprites.add(newSprite);
   }
 
@@ -70,7 +70,7 @@ class SpriteGroup {
   Sprite spriteFromFilename(String filename, int width, int height) {
     Sprite sprite = new Sprite.fromFilename(filename, width, height);
     add(sprite);
-    if (canvas!=null) sprite.canvas = canvas;
+    if (canvas != null) sprite.canvas = canvas;
     return sprite;
   }
 
