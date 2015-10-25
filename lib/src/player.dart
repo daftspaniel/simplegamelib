@@ -41,6 +41,7 @@ class Player {
   /// For example, a score display.
   Player.withNotifications(Function updateNotification) {
     reset();
+    _updateNotification = updateNotification;
   }
 
   /// Standard initialisation.
