@@ -25,7 +25,7 @@ class Player {
   }
 
   set lives(int newLives) {
-    _lives = lives;
+    _lives = newLives;
     update();
   }
 

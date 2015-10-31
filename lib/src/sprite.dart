@@ -7,7 +7,6 @@ import 'spritegroup.dart';
 
 /// A Sprite is an on-screen entity that usually moves.
 class Sprite {
-
   int _x = 0;
   int _y = 0;
   int _width = 0;
@@ -15,6 +14,7 @@ class Sprite {
 
   int _speed = 1;
   String tag = '';
+  int cyclesToDie = 200;
 
   bool alive = true;
   bool dying = false;
@@ -24,6 +24,7 @@ class Sprite {
   Rectangle rect;
   Rectangle limits;
   ImageElement image;
+  ImageElement imageDying;
   CanvasRenderingContext2D canvas;
 
   /// List of [Sprite] objects that this one can't overlap.
@@ -73,6 +74,11 @@ class Sprite {
     updatePos();
   }
 
+  setDyingImage(String filename) {
+    imageDying = new ImageElement(src: filename);
+    imageDying.onLoad.first;
+  }
+
   /// Default Constructor.Intended for subclasses.
   Sprite() {}
 
@@ -88,7 +94,11 @@ class Sprite {
 
   /// Draw this [Sprite].
   void draw() {
-    canvas.drawImage(image, _x, _y);
+    if (!dying) {
+      canvas.drawImage(image, _x, _y);
+    } else {
+      canvas.drawImage(imageDying, _x, _y);
+    }
   }
 
   /// Detect if the [Rectangle] of the supplied [Sprite] collides with this one.
@@ -113,6 +123,13 @@ class Sprite {
 
   /// Updated the [Sprite]'s positional [Rectangle] depending on movement, speed and limiter settings.
   void update() {
+    if (dying) {
+      cyclesToDie--;
+      if (cyclesToDie < 1) {
+        dying = false;
+        alive = false;
+      }
+    }
     int xMove = movement.x * _speed;
     int yMove = movement.y * _speed;
     Rectangle nextRect;
@@ -130,7 +147,6 @@ class Sprite {
 
       if (!limits.containsRectangle(nextRect)) {
         yMove = 0;
-        //print("killy");
       }
     }
 

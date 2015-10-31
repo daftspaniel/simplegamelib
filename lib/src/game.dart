@@ -78,6 +78,7 @@ class Game {
   void setUpKeys() {
     window.onKeyDown.listen((KeyboardEvent e) {
 
+      if (player.sprite.dying) return;
       if (e.keyCode == 38) {
         player.sprite.movement = new Point(player.sprite.movement.x, -1);
       }
@@ -93,6 +94,8 @@ class Game {
     });
 
     window.onKeyUp.listen((KeyboardEvent e) {
+
+      if (player.sprite.dying) return;
       if (e.keyCode == 38) {
         player.sprite.movement = new Point(player.sprite.movement.x, 0);
       }
