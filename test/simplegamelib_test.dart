@@ -130,13 +130,13 @@ void main() {
     test('Property : y', () {
       Sprite s = createSprite();
       s.y = 100;
-      expect(s.x, equals(100));
+      expect(s.y, equals(100));
     });
 
     test('Property : speed', () {
       Sprite s = createSprite();
       s.speed = 57;
-      expect(s.x, equals(57));
+      expect(s.speed, equals(57));
     });
 
     test('Stop', () {
