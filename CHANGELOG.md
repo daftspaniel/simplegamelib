@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.12
+
+- Improved Player and Sprite lifecycle.
+- Game now has a stop method.
+- Sprite now has a property called speed.
+
 ## 0.0.11
 - Added color property to background.
 - Added Collectible class.

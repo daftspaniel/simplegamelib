@@ -1,6 +1,6 @@
 # simplegamelib
 
-Heads Up - this is a very early release!
+Heads Up - this is an early release!
 
 [![Build Status](https://travis-ci.org/daftspaniel/simplegamelib.svg?branch=master)](https://travis-ci.org/daftspaniel/simplegamelib)
 

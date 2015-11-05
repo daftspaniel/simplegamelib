@@ -34,6 +34,7 @@ class Sprite {
   int get y => _y;
   int get width => _width;
   int get height => _height;
+  int get speed => _speed;
 
   set width(int newWidth) {
     _width = newWidth;
@@ -94,7 +95,7 @@ class Sprite {
 
   /// Draw this [Sprite].
   void draw() {
-    if (!dying) {
+    if (!dying || imageDying == null) {
       canvas.drawImage(image, _x, _y);
     } else {
       canvas.drawImage(imageDying, _x, _y);

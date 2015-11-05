@@ -9,6 +9,7 @@ class Player {
   int _score;
   int _health;
   int _lives;
+  int _respawnCount;
 
   int get health => _health;
   int get score => _score;
@@ -27,6 +28,10 @@ class Player {
   set lives(int newLives) {
     _lives = newLives;
     update();
+  }
+
+  set respawnCount(int newRc) {
+    _respawnCount = newRc;
   }
 
   String name;
@@ -50,6 +55,7 @@ class Player {
     score = 0;
     name = "Player1";
     lives = 3;
+    respawnCount = 100;
   }
 
   /// Updates and notifies of changes to properties
@@ -64,5 +70,17 @@ class Player {
   apply(Collectible powerUp) {
     score += powerUp.scoreDelta;
     health += powerUp.healthDelta;
+  }
+
+  ///
+  isReadyToRespawn() {
+    if (_respawnCount < 1) {
+      _respawnCount = 100;
+      health = 100;
+      return true;
+    }
+    _respawnCount -= 1;
+    print(_respawnCount);
+    return false;
   }
 }

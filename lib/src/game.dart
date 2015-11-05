@@ -57,6 +57,11 @@ class Game {
     window.requestAnimationFrame(this.draw);
   }
 
+  /// Stop the game playing.
+  void stop(){
+    logicUpdate.cancel();
+  }
+
   /// Logic update loop using [Timer].
   void update(Timer i) {
     spriteGroup.update();
