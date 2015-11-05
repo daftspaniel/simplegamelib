@@ -121,6 +121,24 @@ void main() {
       expect(s.x, equals(91));
     });
 
+    test('Property : x', () {
+      Sprite s = createSprite();
+      s.x = 100;
+      expect(s.x, equals(100));
+    });
+
+    test('Property : y', () {
+      Sprite s = createSprite();
+      s.y = 100;
+      expect(s.x, equals(100));
+    });
+
+    test('Property : speed', () {
+      Sprite s = createSprite();
+      s.speed = 57;
+      expect(s.x, equals(57));
+    });
+
     test('Stop', () {
       Sprite s = createSprite();
       s.x = 0;
