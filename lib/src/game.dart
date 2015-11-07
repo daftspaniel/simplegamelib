@@ -10,23 +10,19 @@ import 'package:simplegamelib/simplegamelib.dart';
 class Game {
   /// The name of the game.
   String name;
-  Player player;
-  Arena arena;
-  ResourcePack resources;
+  Player player = new Player();
+  SpriteGroup spriteGroup = new SpriteGroup();
+  SpriteGroup collectiblesGroup = new SpriteGroup();
+
   Renderer renderer;
-  SpriteGroup spriteGroup;
-  SpriteGroup collectiblesGroup;
   Timer logicUpdate;
   Function customUpdate;
   Rectangle drawLimits;
 
-  /// The main game constructor.
+  bool _running = false;
+
+  /// The main [Game] constructor.
   Game(this.name, [String canvasID = ""]) {
-    player = new Player();
-    arena = new Arena();
-    resources = new ResourcePack();
-    spriteGroup = new SpriteGroup();
-    collectiblesGroup = new SpriteGroup();
     drawLimits = new Rectangle(0, 0, 800, 600);
     if (canvasID.length > 0) {
       CanvasElement canvas = querySelector(canvasID);
@@ -48,18 +44,29 @@ class Game {
   /// Draw the current scene with the [Renderer].
   void draw(num i) {
     renderer.draw();
-    window.requestAnimationFrame(this.draw);
+    if (_running) window.requestAnimationFrame(this.draw);
   }
 
   /// Begin the game display and update loop.
   void start() {
+    if (logicUpdate != null) {
+      logicUpdate.cancel();
+      logicUpdate = null;
+    }
     logicUpdate = new Timer.periodic(new Duration(milliseconds: 20), update);
+
+    _running = true;
     window.requestAnimationFrame(this.draw);
   }
 
   /// Stop the game playing.
-  void stop(){
-    logicUpdate.cancel();
+  void stop() {
+    if (logicUpdate == null) return;
+    if (logicUpdate.isActive) {
+      logicUpdate.cancel();
+    }
+    logicUpdate = null;
+    _running = false;
   }
 
   /// Logic update loop using [Timer].
@@ -82,7 +89,6 @@ class Game {
   /// Set some movement keys for the player [Sprite].
   void setUpKeys() {
     window.onKeyDown.listen((KeyboardEvent e) {
-
       if (player.sprite.dying) return;
       if (e.keyCode == 38) {
         player.sprite.movement = new Point(player.sprite.movement.x, -1);
@@ -99,7 +105,6 @@ class Game {
     });
 
     window.onKeyUp.listen((KeyboardEvent e) {
-
       if (player.sprite.dying) return;
       if (e.keyCode == 38) {
         player.sprite.movement = new Point(player.sprite.movement.x, 0);

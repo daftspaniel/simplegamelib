@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.13
+
+- Fix rendering issue where background increasingly redrawn when game restarted.
+- Refactoring.
+- More tests.
+- Custom background drawing function.
+
 ## 0.0.12
 
 - Improved Player and Sprite lifecycle.

@@ -10,7 +10,8 @@ class Background {
   CanvasRenderingContext2D canvas;
   ImageElement image;
   Rectangle limits;
-  Background(this.canvas, this.limits) {}
+  Function postCustomDraw;
+  Background(this.canvas, this.limits);
 
   String _color;
 
@@ -21,7 +22,7 @@ class Background {
   }
 
   /// Sets an [Image] as the background
-  setImageBackground(String filename) {
+  loadImageBackground(String filename) {
     image = new ImageElement(src: filename);
     image.onLoad.first;
   }
@@ -34,6 +35,10 @@ class Background {
       canvas.fillRect(limits.left, limits.top, limits.width, limits.height);
     } else {
       canvas.clearRect(limits.left, limits.top, limits.width, limits.height);
+    }
+
+    if (postCustomDraw != null) {
+      postCustomDraw(canvas);
     }
   }
 }

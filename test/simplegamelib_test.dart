@@ -139,6 +139,18 @@ void main() {
       expect(s.speed, equals(57));
     });
 
+    test('Property : height', () {
+      Sprite s = createSprite();
+      s.height = 50;
+      expect(s.height, equals(50));
+    });
+
+    test('Property : width', () {
+      Sprite s = createSprite();
+      s.width = 50;
+      expect(s.width, equals(50));
+    });
+
     test('Stop', () {
       Sprite s = createSprite();
       s.x = 0;

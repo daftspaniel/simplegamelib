@@ -9,18 +9,18 @@ class Renderer {
   List<SpriteGroup> _spriteGroups;
 
   Background liveBackground;
-  CanvasRenderingContext2D gameCanvas;
+  CanvasRenderingContext2D canvas;
   Rectangle limits;
 
   /// Creates a renderer for a specific canvas.
-  Renderer(this.gameCanvas, this.limits) {
-    liveBackground = new Background(this.gameCanvas, limits);
+  Renderer(this.canvas, this.limits) {
+    liveBackground = new Background(this.canvas, limits);
     resetGroups();
   }
 
   /// Add a [SpriteGroup] to the [List] of groups handled by this renderer.
   addSpriteGroup(SpriteGroup spriteGroup) {
-    spriteGroup.canvas = gameCanvas;
+    spriteGroup.canvas = canvas;
     _spriteGroups.add(spriteGroup);
   }
 
