@@ -80,7 +80,6 @@ class Player {
       return true;
     }
     _respawnCount -= 1;
-    //print(_respawnCount);
     return false;
   }
 }

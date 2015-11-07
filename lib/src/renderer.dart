@@ -6,7 +6,7 @@ import 'spritegroup.dart';
 
 /// General purpose render engine.
 class Renderer {
-  List<SpriteGroup> _spriteGroups;
+  final List<SpriteGroup> _spriteGroups = new List<SpriteGroup>();
 
   Background liveBackground;
   CanvasRenderingContext2D canvas;
@@ -34,6 +34,6 @@ class Renderer {
 
   /// Reset the group to empty.
   resetGroups() {
-    _spriteGroups = new List<SpriteGroup>();
+    _spriteGroups.clear();
   }
 }

@@ -11,8 +11,8 @@ class Game {
   /// The name of the game.
   String name;
   Player player = new Player();
-  SpriteGroup spriteGroup = new SpriteGroup();
-  SpriteGroup collectiblesGroup = new SpriteGroup();
+  final SpriteGroup spriteGroup = new SpriteGroup();
+  final SpriteGroup collectiblesGroup = new SpriteGroup();
 
   Renderer renderer;
   Timer logicUpdate;

@@ -22,7 +22,7 @@ class Background {
   }
 
   /// Sets an [Image] as the background
-  loadImageBackground(String filename) {
+  void loadImage(String filename) {
     image = new ImageElement(src: filename);
     image.onLoad.first;
   }

@@ -5,10 +5,11 @@ import 'sprite.dart';
 
 /// A collection of [Sprite] objects.
 class SpriteGroup {
-  List<Sprite> sprites;
+  final List<Sprite> sprites = new List<Sprite>();
   CanvasRenderingContext2D canvas;
+
   int get length => sprites.length;
-  bool get empty => sprites.length == 0;
+  bool get isEmpty => sprites.length == 0;
 
   /// Creates an empty [Sprite] group.
   SpriteGroup() {
@@ -17,7 +18,7 @@ class SpriteGroup {
 
   /// Set the group back to empty.
   reset() {
-    sprites = new List<Sprite>();
+    sprites.clear();
   }
 
   /// Add a [Sprite] to the group.
@@ -39,7 +40,7 @@ class SpriteGroup {
 
   /// Detect collision between a [Sprite] and all the sprites in this group.
   List detectCollision(Sprite sprite) {
-    List collisionSprites = new List();
+    List<Sprite> collisionSprites = new List();
     sprites.forEach((Sprite groupSprite) {
       if (groupSprite.detectCollision(sprite) &&
           groupSprite.dying == false) collisionSprites.add(groupSprite);
@@ -49,8 +50,8 @@ class SpriteGroup {
   }
 
   /// Detects collision between a [Rectangle] and all the sprites in this group.
-  List detectCollisionRectangle(Rectangle rect) {
-    List collisionSprites = new List();
+  List<Sprite> detectCollisionRectangle(Rectangle rect) {
+    List<Sprite> collisionSprites = new List();
     sprites.forEach((Sprite groupSprite) {
       if (groupSprite.detectCollisionRectangle(rect) &&
           groupSprite.dying == false) collisionSprites.add(groupSprite);
@@ -76,6 +77,9 @@ class SpriteGroup {
 
   /// Reverse the order of sprites in the list.
   void reverse() {
-    sprites = new List.from(sprites.reversed);
+
+    List<Sprite> revd = new List.from(sprites.reversed);
+    sprites.clear();
+    sprites.addAll(revd);
   }
 }

@@ -200,9 +200,9 @@ void main() {
 
     test('Check empty', () {
       SpriteGroup sg = createSpriteGroup(4);
-      expect(sg.empty, equals(false));
+      expect(sg.isEmpty, equals(false));
       sg.reset();
-      expect(sg.empty, equals(true));
+      expect(sg.isEmpty, equals(true));
     });
 
     test('Update', () {
