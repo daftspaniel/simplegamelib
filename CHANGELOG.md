@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.14
+
+- Dependency updates and use of new generics.
+
 ## 0.0.13
 
 - Fix rendering issue where background increasingly redrawn when game restarted.
