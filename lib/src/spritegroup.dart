@@ -1,6 +1,7 @@
 library simplegamelib.spritegroup;
 
 import 'dart:html';
+
 import 'sprite.dart';
 
 /// A collection of [Sprite] objects.
@@ -9,6 +10,7 @@ class SpriteGroup {
   CanvasRenderingContext2D canvas;
 
   int get length => sprites.length;
+
   bool get isEmpty => sprites.length == 0;
 
   /// Creates an empty [Sprite] group.
@@ -39,7 +41,7 @@ class SpriteGroup {
   }
 
   /// Detect collision between a [Sprite] and all the sprites in this group.
-  List detectCollision(Sprite sprite) {
+  List<Sprite> detectCollision(Sprite sprite) {
     List<Sprite> collisionSprites = new List();
     sprites.forEach((Sprite groupSprite) {
       if (groupSprite.detectCollision(sprite) &&
@@ -50,7 +52,7 @@ class SpriteGroup {
   }
 
   /// Detects collision between a [Rectangle] and all the sprites in this group.
-  List<Sprite> detectCollisionRectangle(Rectangle rect) {
+  List detectCollisionRectangle(Rectangle rect) {
     List<Sprite> collisionSprites = new List();
     sprites.forEach((Sprite groupSprite) {
       if (groupSprite.detectCollisionRectangle(rect) &&
@@ -77,7 +79,6 @@ class SpriteGroup {
 
   /// Reverse the order of sprites in the list.
   void reverse() {
-
     List<Sprite> revd = new List.from(sprites.reversed);
     sprites.clear();
     sprites.addAll(revd);
