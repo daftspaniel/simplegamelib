@@ -2,6 +2,7 @@ library simplegamelib.game;
 
 import 'dart:async';
 import 'dart:html';
+
 import 'package:simplegamelib/simplegamelib.dart';
 
 /// Core [Game] object - not mandatory to use but convenient.

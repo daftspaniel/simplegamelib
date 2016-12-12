@@ -1,7 +1,8 @@
 library simplegamelib.sprite;
 
-import 'dart:math';
 import 'dart:html';
+import 'dart:math';
+
 import 'movements.dart';
 import 'spritegroup.dart';
 
@@ -18,6 +19,7 @@ class Sprite {
 
   bool alive = true;
   bool dying = false;
+  bool bounce = false;
 
   Point movement = new Point(0, 0);
 
@@ -31,9 +33,13 @@ class Sprite {
   SpriteGroup obstacles;
 
   int get x => _x;
+
   int get y => _y;
+
   int get width => _width;
+
   int get height => _height;
+
   int get speed => _speed;
 
   set width(int newWidth) {
@@ -68,13 +74,14 @@ class Sprite {
     _speed = newSpeed;
   }
 
-  /// Create a [Sprite] from a file
+  /// Create a [Sprite] from a file.
   Sprite.fromFilename(String filename, this._width, this._height) {
     image = new ImageElement(src: filename);
     image.onLoad.first;
     updatePos();
   }
 
+  /// Set the dying image for this [Sprite].
   setDyingImage(String filename) {
     imageDying = new ImageElement(src: filename);
     imageDying.onLoad.first;
@@ -131,6 +138,7 @@ class Sprite {
         alive = false;
       }
     }
+
     int xMove = movement.x * _speed;
     int yMove = movement.y * _speed;
     Rectangle nextRect;
@@ -138,16 +146,18 @@ class Sprite {
     // Limit sprite to area of display.
     if (limits != null) {
       nextRect =
-          new Rectangle(rect.left + xMove, rect.top, rect.width, rect.height);
+      new Rectangle(rect.left + xMove, rect.top, rect.width, rect.height);
 
       if (!limits.containsRectangle(nextRect)) {
         xMove = 0;
+        if (bounce) movement = reverseDirection(movement, true, false);
       }
       nextRect =
-          new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
+      new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
 
       if (!limits.containsRectangle(nextRect)) {
         yMove = 0;
+        if (bounce) movement = reverseDirection(movement, false, true);
       }
     }
 
@@ -155,7 +165,9 @@ class Sprite {
     if (obstacles != null) {
       nextRect = new Rectangle(
           rect.left + xMove, rect.top + yMove, rect.width, rect.height);
-      if (obstacles.detectCollisionRectangle(nextRect).length > 0) {
+      if (obstacles
+          .detectCollisionRectangle(nextRect)
+          .length > 0) {
         return;
       }
     }

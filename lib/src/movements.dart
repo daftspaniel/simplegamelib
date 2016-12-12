@@ -18,6 +18,9 @@ class Movements {
 }
 
 /// Change direction of the current [Point].
-Point reverseDirection(Point current){
-  return new Point(current.x*-1, current.y*-1);
+Point reverseDirection(Point current,
+    [ bool changeHorizontal = true, bool changeVertical = true]) {
+  int newVertical = changeVertical ? current.y * -1 : current.y;
+  int newHorizontal = changeHorizontal ? current.x * -1 : current.x;
+  return new Point(newHorizontal, newVertical);
 }

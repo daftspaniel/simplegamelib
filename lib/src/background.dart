@@ -1,7 +1,7 @@
 library simplegamelib.background;
 
-import 'dart:math';
 import 'dart:html';
+import 'dart:math';
 
 /// Basic background data and drawing object.
 class Background {
@@ -11,6 +11,7 @@ class Background {
   ImageElement image;
   Rectangle limits;
   Function postCustomDraw;
+
   Background(this.canvas, this.limits);
 
   String _color;

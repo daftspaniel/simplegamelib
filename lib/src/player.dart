@@ -1,7 +1,7 @@
 library simplegamelib.player;
 
-import 'sprite.dart';
 import 'collectible.dart';
+import 'sprite.dart';
 
 /// Active agent taking part in the game.
 class Player {
@@ -12,7 +12,9 @@ class Player {
   int _respawnCount;
 
   int get health => _health;
+
   int get score => _score;
+
   int get lives => _lives;
 
   set health(int newHealth) {

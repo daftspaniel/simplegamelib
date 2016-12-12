@@ -1,6 +1,7 @@
 library simplegamelib.renderer;
 
 import 'dart:html';
+
 import 'background.dart';
 import 'spritegroup.dart';
 

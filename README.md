@@ -28,8 +28,10 @@ A simple usage example:
 
 ## Features and bugs
 
-Github : https://github.com/daftspaniel/simplegamelib
+Github : 
+
+    https://github.com/daftspaniel/simplegamelib
 
 ## To run unit tests.
 
-    pub run test .\test\simplegamelib_test.dart -p dartium
+    pub run test ./test/simplegamelib_test.dart -p dartium

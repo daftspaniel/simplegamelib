@@ -1,9 +1,11 @@
 library simplegamelib.test;
 
+import 'dart:html';
+
 import 'package:simplegamelib/simplegamelib.dart';
 import 'package:test/test.dart';
+
 import 'helpers.dart';
-import 'dart:html';
 
 void main() {
   group('Core :', () {
@@ -35,7 +37,7 @@ void main() {
     test('Creation', () {
       CanvasRenderingContext2D GameCanvas = getCanvas();
       Renderer myRenderer =
-          new Renderer(GameCanvas, new Rectangle(0, 0, 800, 600));
+      new Renderer(GameCanvas, new Rectangle(0, 0, 800, 600));
       expect(myRenderer, isNotNull);
     });
 
@@ -64,20 +66,16 @@ void main() {
         ..setMovement(10, 0)
         ..updatePos();
 
-      wall..position = new Point(50, 0)
-          ..width = 100
-          ..height = 1000
-          ..updatePos();
+      wall
+        ..position = new Point(50, 0)
+        ..width = 100
+        ..height = 1000
+        ..updatePos();
       walls.add(wall);
       s.obstacles = walls;
       //print(s.rect);
       //print(wall.rect);
-      s
-        ..update()
-        ..update()
-        ..update()
-        ..update()
-        ..update();
+      s..update()..update()..update()..update()..update();
 
       /*  ..update()
         ..update()
@@ -235,7 +233,9 @@ void main() {
       SpriteGroup sg = createSpriteGroup(4);
       sg.add(new Sprite.noImage(110, 110, 10, 10));
       Sprite s1 = new Sprite.noImage(0, 0, 10, 10);
-      expect(sg.detectCollision(s1).length, 4);
+      expect(sg
+          .detectCollision(s1)
+          .length, 4);
     });
 
     test('Add limiter to a Sprite', () {
@@ -277,7 +277,9 @@ void main() {
       sg.add(dyingSprite);
 
       Sprite s1 = new Sprite.noImage(0, 0, 10, 10);
-      expect(sg.detectCollision(s1).length, 3);
+      expect(sg
+          .detectCollision(s1)
+          .length, 3);
     });
   });
 
