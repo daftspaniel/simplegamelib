@@ -69,6 +69,13 @@ class Sprite {
     updatePos();
   }
 
+  /// Move the [Sprite] to position x y. No checks made.
+  setPosition(int x, int y) {
+    this._x = x;
+    this._y = y;
+    updatePos();
+  }
+
   /// Relative speed acts as multiplier for movement values.
   set speed(int newSpeed) {
     _speed = newSpeed;

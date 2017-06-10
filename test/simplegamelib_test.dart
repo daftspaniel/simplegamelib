@@ -131,6 +131,13 @@ void main() {
       expect(s.y, equals(100));
     });
 
+    test('setPosition', () {
+      Sprite s = createSprite();
+      s.setPosition(10, 12);
+      expect(s.x, equals(10));
+      expect(s.y, equals(12));
+    });
+
     test('Property : speed', () {
       Sprite s = createSprite();
       s.speed = 57;

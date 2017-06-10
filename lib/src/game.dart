@@ -76,11 +76,12 @@ class Game {
     if (customUpdate != null) customUpdate();
 
     // Default collectibles.
-    collectiblesGroup.sprites.forEach((Collectible thing) {
+    collectiblesGroup.sprites.forEach((Sprite thing) {
+      Collectible collectible = thing;
       if (thing.detectCollision(player.sprite)) {
         player
-          ..health += thing.healthDelta
-          ..score += thing.scoreDelta;
+          ..health += collectible.healthDelta
+          ..score += collectible.scoreDelta;
         thing.alive = false;
         collectiblesGroup.removeDead();
       }
