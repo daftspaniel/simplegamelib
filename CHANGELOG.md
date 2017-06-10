@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.15
+
+- Updates for Strong Mode DDC.
+- New setPosition method on Sprite.
+
 ## 0.0.14
 
 - Dependency updates and use of new generics.
