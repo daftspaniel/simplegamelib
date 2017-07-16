@@ -6,3 +6,4 @@ sudo: false
 dart_task:
   - dartanalyzer: true
   - dartfmt
+  - test: --platform firefox
