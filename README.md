@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/daftspaniel/simplegamelib.svg?branch=master)](https://travis-ci.org/daftspaniel/simplegamelib)
 
-An easy to use package for simple 2D games.
+An easy to use package for simple web 2D games.
 
 ## Usage
 
