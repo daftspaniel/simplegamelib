@@ -37,7 +37,7 @@ void main() {
     test('Creation', () {
       CanvasRenderingContext2D GameCanvas = getCanvas();
       Renderer myRenderer =
-      new Renderer(GameCanvas, new Rectangle(0, 0, 800, 600));
+          new Renderer(GameCanvas, new Rectangle(0, 0, 800, 600));
       expect(myRenderer, isNotNull);
     });
 
@@ -240,9 +240,7 @@ void main() {
       SpriteGroup sg = createSpriteGroup(4);
       sg.add(new Sprite.noImage(110, 110, 10, 10));
       Sprite s1 = new Sprite.noImage(0, 0, 10, 10);
-      expect(sg
-          .detectCollision(s1)
-          .length, 4);
+      expect(sg.detectCollision(s1).length, 4);
     });
 
     test('Add limiter to a Sprite', () {
@@ -284,9 +282,7 @@ void main() {
       sg.add(dyingSprite);
 
       Sprite s1 = new Sprite.noImage(0, 0, 10, 10);
-      expect(sg
-          .detectCollision(s1)
-          .length, 3);
+      expect(sg.detectCollision(s1).length, 3);
     });
   });
 

@@ -153,14 +153,14 @@ class Sprite {
     // Limit sprite to area of display.
     if (limits != null) {
       nextRect =
-      new Rectangle(rect.left + xMove, rect.top, rect.width, rect.height);
+          new Rectangle(rect.left + xMove, rect.top, rect.width, rect.height);
 
       if (!limits.containsRectangle(nextRect)) {
         xMove = 0;
         if (bounce) movement = reverseDirection(movement, true, false);
       }
       nextRect =
-      new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
+          new Rectangle(rect.left, rect.top + yMove, rect.width, rect.height);
 
       if (!limits.containsRectangle(nextRect)) {
         yMove = 0;
@@ -172,9 +172,7 @@ class Sprite {
     if (obstacles != null) {
       nextRect = new Rectangle(
           rect.left + xMove, rect.top + yMove, rect.width, rect.height);
-      if (obstacles
-          .detectCollisionRectangle(nextRect)
-          .length > 0) {
+      if (obstacles.detectCollisionRectangle(nextRect).length > 0) {
         return;
       }
     }

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.16
+
+- Updates for Dart 2.0.
+
 ## 0.0.15
 
 - Updates for Strong Mode DDC.

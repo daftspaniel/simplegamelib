@@ -44,8 +44,8 @@ class SpriteGroup {
   List<Sprite> detectCollision(Sprite sprite) {
     List<Sprite> collisionSprites = new List();
     sprites.forEach((Sprite groupSprite) {
-      if (groupSprite.detectCollision(sprite) &&
-          groupSprite.dying == false) collisionSprites.add(groupSprite);
+      if (groupSprite.detectCollision(sprite) && groupSprite.dying == false)
+        collisionSprites.add(groupSprite);
     });
 
     return collisionSprites;

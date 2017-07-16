@@ -8,8 +8,7 @@ Sprite createSprite() {
 
 SpriteGroup createSpriteGroup(int count) {
   SpriteGroup sg = new SpriteGroup();
-  for (int i = 0; i < count; i++)
-    sg.add(createSprite());
+  for (int i = 0; i < count; i++) sg.add(createSprite());
   return sg;
 }
 
