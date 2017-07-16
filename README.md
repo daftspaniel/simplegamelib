@@ -1,10 +1,8 @@
 # simplegamelib
 
-Heads Up - this is an early release!
-
 [![Build Status](https://travis-ci.org/daftspaniel/simplegamelib.svg?branch=master)](https://travis-ci.org/daftspaniel/simplegamelib)
 
-An easy to use package for 2D games. It is going to be awesome.
+An easy to use package for simple 2D games.
 
 ## Usage
 

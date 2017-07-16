@@ -5,5 +5,5 @@ dart:
 sudo: false
 dart_task:
   - dartanalyzer: true
-  - test
+  - test: --platform chrome
   - dartfmt
